@@ -1,0 +1,68 @@
+#container {
+    width: 600px;
+    border: 1px solid black;
+}
+
+header {
+    width: 600px;
+    height: 100px;
+    background: blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav {
+    width: 195px;
+    height: 400px;
+    background: greenyellow;
+    float: left;
+    margin: 5px;
+}
+
+#conteudo {
+    width: 395px;
+    float: right;
+    
+}
+
+article {
+    width: ;
+    margin-top: 5px;
+    margin-left: 5px;
+    height: 196px;
+    background: orange;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+footer {
+    width: 600px;
+    height: 50px;
+    background: rgb(143, 189, 255);
+    float: right;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+td{
+    width: 100px;
+    height: 8px;
+}
+
+th {
+    padding: 8px;
+}
+
+iframe {
+    width: 100px;
+    height: 50px;
+    position: relative;
+    left: 200px;
+}
+
+

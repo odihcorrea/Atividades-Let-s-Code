@@ -136,6 +136,10 @@ h5 {
 	object-fit: cover;
 }
 
+#digital_skills img:hover {
+	transform: scale(1.4);
+}
+
 .project {
 	display: inline-block;
 	color: white;

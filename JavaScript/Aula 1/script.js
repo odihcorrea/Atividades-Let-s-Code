@@ -1,6 +1,7 @@
 var calc = '';
 var resultado = '';
 var calc1 = '';
+var ope = '';
 
 
 function um() {
@@ -70,11 +71,51 @@ function porcentagem() {
 }
 
 function mais() {
+    calc = Number(calc1) + Number(calc);
     calc1 = calc;
     document.getElementById('saida').innerText = calc;
-    calc= '';
+    calc = '';
+    ope = '+';
+}
+
+function menos() {
+    calc = Number(calc1) - Number(calc);
+    calc1 = calc;
+    document.getElementById('saida').innerText = calc;
+    calc = '';
+    ope = '-';
+}
+
+function vezes() {
+    if (calc1 > 0)
+        calc = Number(calc1) * Number(calc);
+    calc1 = calc;
+    document.getElementById('saida').innerText = calc;
+    calc = '';
+    ope = '*';
+}
+
+function dividir() {
+    if (calc1 > 0)
+    calc = Number(calc1) / Number(calc);
+    calc1 = calc;
+    document.getElementById('saida').innerText = calc;
+    calc = '';
+    ope = '/';
 }
 
 function igual() {
-    document.getElementById('saida').innerText = Number(calc1)+Number(calc);
+    if (ope == '+')
+        document.getElementById('saida').innerText = Number(calc1) + Number(calc);
+    else if (ope == '-')
+        document.getElementById('saida').innerText = Number(calc1) - Number(calc);
+    else if (ope == '*')
+        document.getElementById('saida').innerText = Number(calc1) * Number(calc);
+    else if (ope == '/')
+        document.getElementById('saida').innerText = Number(calc1) / Number(calc);
+    else
+        document.getElementById('saida').innerText = "ERROR"
+
+    
+    ope = '';
 }

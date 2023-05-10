@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>coiso</title>
+
+    <script src="atividade.js"></script>
+
+    <style>
+        p {
+            font-weight: bold;
+            font-size: 1.1em;
+            line-height: 35px;
+
+        }
+        
+        #frase {
+            width: 50%;
+            float: right;
+            text-align: center;
+            box-sizing: border-box;
+            padding-right: 30px;
+            
+        }
+
+        #input {
+            width: 50%;
+            float: left;
+            width: 80px;
+        }
+
+        input {
+            border-radius: 0px 10px 10px ;
+        }
+
+        button {
+            border-radius: 5px;
+            width: 100%;
+            margin-top: 5px;
+            margin-left: 50%;
+        }
+
+
+
+        
+    </style>
+
+</head>
+<body>
+    <fieldset>
+        <legend>Ordem crescente dos números</legend>
+        <div id="input">
+            <label for="n1">Número</label>
+            <input type="text" name="n1" id="num1">
+            <br>
+            <label for="n2">Número</label>
+            <input type="text" name="n2" id="num2">
+            <br>
+            <label for="n3">Número</label>    
+            <input type="text" name="n3" id="num3">
+            <br>
+            <button onclick="teste()">Ordenar</button>
+        </div>
+        <div id="frase"> <p id="texto"></p> </div>
+    </fieldset>
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="pt">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+
+    <title>Login - Atividade</title>
+
+    <script src="js/script.js" defer></script>
+
+
+    <style>
+        
+        body, html {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgb(155, 0, 155), rgb(241, 103, 103));
+
+        }
+
+        #container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            
+
+        }
+
+        #principal{
+            background-color: rgb(255, 255, 255, 0.25);
+            border-radius: 10%;
+            width: 500px;
+            height: 500px;
+            position: relative;
+        }
+
+        #loginImage {
+            width: 150px;
+            opacity: 0.5;
+            position: absolute;
+            left: 130px ;
+            top: -80px;
+        }
+
+        #loginInput {
+            width: 80%;
+            position: absolute;
+            left: 45px;
+            top: 99px
+        }
+
+        #cadastroInput {
+            width: 80%;
+            position: absolute;
+            left: 50px;
+            top: 30px
+        }
+
+        #recuperarSenha {
+            width: 60%;
+            position: absolute;
+            left: 100px;
+            top: 30px
+        }
+
+        #semAcesso {
+            color: black;
+            font-weight: bold;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .link {
+            color: blue;
+            font-weight: lighter;
+            padding-left: 10px;
+        }
+
+        .esconder {
+            display: none;
+        }
+
+        .aparecer {
+            display: block;
+        }
+
+        .sair {
+            animation-name: sair;
+            animation-duration: 1s;
+            animation-play-state: unset;
+        }
+
+        .entrar {
+            animation-name: entrar;
+            animation-duration: 1s;
+        }
+
+        /* Modo Dark*/
+        #modoDark {
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 50%;
+            background: linear-gradient(to bottom, rgb(24, 24, 24), gray);
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+        }
+
+        #modoDark:hover {
+            cursor: pointer;
+
+        }
+
+        .bgDark {
+            background: linear-gradient(to bottom, rgb(24, 24, 24), gray);
+        }
+
+        .btnDark {
+            background: linear-gradient(to bottom, rgb(24, 24, 24), gray);
+            color: white;
+        }
+
+        /* Modo Normal */
+        #modoNormal {
+            width: 30px;
+            height: 30px;
+            border: 1px solid black;
+            border-radius: 50%;
+            background: linear-gradient(to top, rgb(155, 0, 155), rgb(241, 103, 103));
+            position: absolute;
+            bottom: 10px;
+            right: 30px;
+        }
+
+        #modoNormal:hover {
+            cursor: pointer;
+        }
+
+        /*animação*/
+        @keyframes sair {
+            from {transform: scaleX(1);}
+            to {transform: scaleX(0.0001);}
+        }
+
+        @keyframes entrar {
+            from {transform: scaleX(0.0001);}
+            to {transform: scaleX(1);}
+        }
+
+    </style>
+
+  </head>
+  <body id="body" class="">
+    
+    <div id="container">
+
+        <div id="principal">
+            <div id="loginInput" class="aparecer">
+                <img id="loginImage" src="img/login.png" alt="">
+                <div id="loginInput">
+                    <div class="form-group">
+                        <input class="form-control" type="email" name="email" id="emailll" placeholder="Digite seu e-mail">
+                        <p id="erroEmail" class="invalid-feedback">E-mail incorreto</p>
+                        <input class="form-control" type="password" name="senha" id="senha" placeholder="Digite sua senha">
+                        <p id="erroSenha" class="invalid-feedback">Senha incorreta</p>
+                        <button onclick="entrar()" id="btnEntrar" class="btn btn-primary btn-block btn-lg">Entrar</button>
+
+                        <p id="semAcesso">Não tem Acesso?<span><button id="btnEsqueci" onclick="mudarSenha()" class="btn btn-outline-warning btn-sm ml-2">Esqueci minha senha</button></span></p>
+
+                        <div style="text-align: center; padding-top: 30px;">
+                            <button id="btnCriarConta" class="btn btn-success btn-lg" onclick="criarConta()">Criar uma conta</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Tela de Cadastro-->
+            <div id="cadastroInput" class="esconder">
+                <h1 style="text-align: center;">Cadastre-se</h1>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="nome">Nome</label>
+                    </div>
+                    <input class="form-control" type="text" name="nomeCompleto" id="nomeCompleto" placeholder="Nome Completo">
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="email2">E-mail</label>
+                    </div>
+                    <input class="form-control" type="email" name="email2" id="email2" placeholder="exemplo@email.com">
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="nasc">D. Nasc</label>
+                    </div>
+                    <input class="form-control" type="date" name="nasc" id="nasc" placeholder="exemplo@email.com">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="sexo">Sexo</label>
+                    </div>
+                    <select class="form-control" name="sexo" id="sexo">
+                        <option class="form-control" value="feminino">Feminino</option>
+                        <option class="form-control" value="masculino">Masculino</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="cadastrarSenha">Senha</label>
+                    </div>
+                    <input class="form-control" type="text" name="cadastrarSenha" id="cadastrarSenha" placeholder="Mínimo 8 caracteres">
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="confirmarSenha">Confirme</label>
+                    </div>
+                    <input class="form-control" type="text" name="confirmarSenha" id="confirmarSenha" placeholder="Repita a senha">
+                    <span class="invalid-feedback">A senha deve ser igual a anterior</span>
+                </div>
+
+                    <button onclick="criarCadastro()" id="btnCriarConta2" class=" btn btn-success btn-block btn-lg">Criar Conta</button>
+
+                    <div style="text-align: center; padding-top: 30px;">
+                        <button id="btnEntrarConta" onclick="acessarConta()" class=" btn btn-primary btn-lg" style="margin-top: 68px;">Entrar em sua conta</button>
+                    </div>
+                </div>
+        
+            <!--Recuperar Senha-->
+            <div id="recuperarSenha" class="esconder">
+                <h1 style="text-align: center; margin-bottom: 20px;">Recuperar Senha</h1>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="nomeRecuperar">Nome</label>
+                    </div>
+                    <input class="form-control" type="text" name="nomeRecuperar" id="nomeRecuperar" placeholder="Nome Completo">
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="emailRecuperar">E-mail</label>
+                    </div>
+                    <input class="form-control" type="email" name="emailRecuperar" id="emailRecuperar" placeholder="exemplo@email.com">
+                </div>
+
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text" for="nascRecuperar">D. Nasc</label>
+                    </div>
+                    <input class="form-control" type="date" name="nascRecuperar" id="nascRecuperar">
+                    <span class="invalid-feedback" id="dadosIncorretos">Verifique seus dados e tente novamente</span>
+                </div>
+                    <div id="novaSenha1" class="esconder">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="cadastrarSenha">Senha</label>
+                            </div>
+                            <input class="form-control" type="text" name="cadastrarSenha2" id="cadastrarSenha2" placeholder="Mínimo 8 caracteres">
+                        </div>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="confirmarSenha2">Confirme</label>
+                            </div>
+                            <input class="form-control" type="text" name="confirmarSenha2" id="confirmarSenha2" placeholder="Repita a senha">
+                            <span class="invalid-feedback">A senha deve ser igual a anterior</span>
+                        </div>
+                    </div>
+
+                    <button onclick="redefinirSenha()" id="btnAlterarSenha" class="btn btn-warning btn-block btn-lg" onclick="verificarSenha()">Alterar senha</button>
+                    <button onclick="redefinirSenha2()" id="btnAlterarSenha2" class="esconder btn btn-danger btn-block btn-lg" onclick="verificarSenha()">Alterar senha</button>
+
+                    <div style="text-align: center; padding-top: 30px;">
+                        <button id="btnEntrarConta2" onclick="acessarConta()" class="btn btn-primary btn-lg mt-5" style="margin-top: 68px;">Entrar em sua conta</button>
+                    </div>
+                </div>
+                <buttom onclick="mudarModoDark()" id="modoDark">
+                </buttom>
+                <button onclick="mudarModoNormal()" id="modoNormal" class="esconder">
+                </button>
+            </div>
+            
+        </div> <!---Fim Recuperar Senha-->
+        
+    </div>
+
+    <!--Meu Script-->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

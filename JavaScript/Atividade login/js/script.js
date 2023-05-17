@@ -55,9 +55,13 @@ function criarCadastro() {
 
 function entrar() {
     email = document.getElementById('emailll').value
-    senha = document.getElementById('senha').value
-    
-    if (senha != senhaCadastrada || senha == "") {
+    if (senha == "") {
+        senha = 'indefinido'
+    } else {
+        senha = document.getElementById('senha').value
+    }
+
+    if (senha != senhaCadastrada) {
         senhaIncorreta.classList.add('is-invalid')
     } 
     

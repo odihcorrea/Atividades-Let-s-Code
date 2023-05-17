@@ -1,0 +1,94 @@
+body, html {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(to bottom, rgb(146, 146, 255), rgb(255, 116, 116));
+}
+
+#contain {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+#caixagrande {
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    border-radius: 50px;
+    background-color: rgb(255, 255, 255,0.3);
+    box-shadow: rgb(0, 0, 0) 0px 0px 100px 0px;
+}
+#caixa,
+#estoque {
+    width: 500px;
+    height: 500px;
+
+}
+
+.aparecer {
+    animation: aparecer 0.5s ease-in-out;
+}
+
+@keyframes aparecer {
+    from {
+        transform: scaley(0);
+    }
+    to {
+        transform: scale(100px);
+    }
+}
+
+.none {
+    display: none;
+}
+
+h1 {
+    text-align: center;
+    padding: 40px 0;
+}
+
+#formulario {
+    width: 80%;
+    margin: 0 auto;
+}
+
+input {
+    width: 100%;
+    margin: 5px 0;
+    height: 40px;
+    border-radius: 15px;
+    padding: 0px 10px;
+}
+
+input:focus {
+    box-shadow: rgb(117, 117, 255) 0 0 10px 4px;
+}
+
+#botaoCadastrar,
+#botaoEstoque {
+    border-radius: 15px;
+    margin-top: 8px;
+}
+
+.apagarFormato {
+    border: none;
+    background: none;
+    padding: none;
+    margin: none;
+
+}
+
+th {
+    text-align: center;
+}
+
+.bgtd {
+    background-color: rgb(197, 197, 197);
+}
+
+table {
+    border-radius: 20px;
+}

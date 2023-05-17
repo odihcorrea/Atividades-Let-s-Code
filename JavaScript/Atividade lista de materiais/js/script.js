@@ -43,6 +43,22 @@ function cadastrarProduto() {
     document.getElementById('produto').value = ''
     document.getElementById('preço').value = ''
 
+    if (qtdeMaterial != "" && precoUnitario != "" && nomeMaterial != "") {
+        let alerta = document.getElementById('alerta')
+        alerta.classList.remove('none')
+    } else {
+        let alerta2 = document.getElementById('alerta2')
+        alerta2.classList.toggle('none')
+    }
+    function fecharAlerta() {
+    let alerta2 = document.getElementById('alerta2')
+    alerta2.classList.add('none')
+    let alerta = document.getElementById('alerta')
+        alerta.classList.add('none')
+}
+    setTimeout(fecharAlerta, 3000)
+
+
 };
 
 function mostrarEstoque() {
@@ -52,6 +68,12 @@ function mostrarEstoque() {
     cadastro.classList.toggle('none')
     estoque.classList.toggle('aparecer')
     cadastro.classList.toggle('aparecer')
+    
+    let editar = document.querySelectorAll('.apenasEditar')
+    editar.forEach(elemento => {
+        elemento.classList.add('none');
+    })
+
 
 }
 
@@ -64,7 +86,7 @@ function editarProdutos() {
 }
 
 function apagarLinha(botao) {
-    var linha = botao.parentNode.parentNode; // Obtém a linha atual
+    let linha = botao.parentNode.parentNode;
     linha.parentNode.removeChild(linha)
 }
 
@@ -77,6 +99,15 @@ function editarConteudo(botao) {
     estoque.classList.toggle('aparecer')
     cadastro.classList.toggle('aparecer')
     apagarLinha(botao)
+    
+    let linha = botao.parentNode.parentNode;
+    let cells = linha.getElementsByTagName('td');
+
+
+    document.getElementById('qtd').value = cells[0].innerText
+    document.getElementById('produto').value = cells[1].innerText
+    document.getElementById('preço').value = cells[2].innerText
+
     
     
 }

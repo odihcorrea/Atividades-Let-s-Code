@@ -1,16 +1,22 @@
+// array
+const dadosTabela = []
 
-//funções dos Botões
 
-function cadastrarProduto() {
-    const qtdeMaterial = document.getElementById('qtd').value;
-    const nomeMaterial = document.getElementById('produto').value;
-    const precoUnitario = document.getElementById('preço').value;
-    const editar = ('<button id="editar" class="apagarFormato" onclick="editarConteudo(this)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil" viewBox="0 0 16 16"><path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/></svg></button>')
-    const apagar = ('<button id="apagar" class="apagarFormato" onclick="apagarLinha(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16"><path d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z"/></svg></button>');
+//Recuperar dados
+let qtdeMaterial = document.getElementById('qtd').value;
+let nomeMaterial = document.getElementById('produto').value;
+let precoUnitario = document.getElementById('preço').value;
+let editar1 = ('<button id="editar" class="apagarFormato" onclick="editarConteudo(this)"><i class="fa-solid fa-pen-to-square"></i></button>')
+let apagar = ('<button id="apagar" class="apagarFormato" onclick="apagarLinha(this)"><i class="fa-solid fa-trash"></i></button>');
 
-    var tabela = document.getElementById('tabela');
-    var tbody = tabela.getElementsByTagName('tbody')[0];
+//Recuperando itens
+var tabelaRecuperada = localStorage.getItem('tabela')
 
+//Converter para Array
+var arrayRecuperado = JSON.parse(tabelaRecuperada)
+
+
+arrayRecuperado.forEach(e => {
     var novaLinha = document.createElement('tr');
     var colunaqtd = document.createElement('td');
     var colunaproduto = document.createElement('td')
@@ -18,10 +24,10 @@ function cadastrarProduto() {
     var colunaEditar = document.createElement('td')
     var colunaExcluir = document.createElement('td')
 
-    colunaqtd.textContent = qtdeMaterial;
-    colunaproduto.textContent = nomeMaterial;
-    colunapreço.textContent = precoUnitario;
-    colunaEditar.innerHTML = editar;
+    colunaqtd.textContent = e.Quantidade;
+    colunaproduto.textContent = e.Produto;
+    colunapreço.textContent = e.Preço;
+    colunaEditar.innerHTML = editar1;
     colunaExcluir.innerHTML = apagar;
 
     novaLinha.appendChild(colunaqtd);
@@ -38,28 +44,87 @@ function cadastrarProduto() {
     colunaExcluir.classList.add('bgtd')
 
     tbody.appendChild(novaLinha);
+})
+arrayRecuperado.forEach(n => {
+    dadosTabela.push(n)
+})
 
-    document.getElementById('qtd').value = ''
-    document.getElementById('produto').value = ''
-    document.getElementById('preço').value = ''
+
+//funções dos Botões
+
+function cadastrarProduto() {
+    var qtdeMaterial = document.getElementById('qtd').value;
+    var nomeMaterial = document.getElementById('produto').value;
+    var precoUnitario = document.getElementById('preço').value;
+    var editar = ('<button id="editar" class="apagarFormato" onclick="editarConteudo(this)"><i class="fa-solid fa-pen-to-square"></i></button>')
+    var apagar = ('<button id="apagar" class="apagarFormato" onclick="apagarLinha(this)"><i class="fa-solid fa-trash"></i></button>');
 
     if (qtdeMaterial != "" && precoUnitario != "" && nomeMaterial != "") {
         let alerta = document.getElementById('alerta')
         alerta.classList.remove('none')
+        var tabela = document.getElementById('tabela');
+        var tbody = tabela.getElementsByTagName('tbody')[0];
+
+        const dadosLinha = { 
+            Quantidade: qtdeMaterial,
+            Produto:  nomeMaterial,
+            Preço: precoUnitario
+        }
+
+        dadosTabela.push(dadosLinha)
+
+        //convertendo para json
+        var tabelaArray = JSON.stringify(dadosTabela)
+
+        //salvando no Local Storage
+        localStorage.setItem('tabela', tabelaArray)
+
+        var novaLinha = document.createElement('tr');
+        var colunaqtd = document.createElement('td');
+        var colunaproduto = document.createElement('td')
+        var colunapreço = document.createElement('td')
+        var colunaEditar = document.createElement('td')
+        var colunaExcluir = document.createElement('td')
+
+        colunaqtd.textContent = qtdeMaterial;
+        colunaproduto.textContent = nomeMaterial;
+        colunapreço.textContent = precoUnitario;
+        colunaEditar.innerHTML = editar;
+        colunaExcluir.innerHTML = apagar;
+
+        novaLinha.appendChild(colunaqtd);
+        novaLinha.appendChild(colunaproduto);
+        novaLinha.appendChild(colunapreço);
+        novaLinha.appendChild(colunaEditar);
+        novaLinha.appendChild(colunaExcluir);
+
+        colunaEditar.classList.add('apenasEditar')
+        colunaEditar.classList.add('none')
+        colunaEditar.classList.add('bgtd')
+        colunaExcluir.classList.add('apenasEditar')
+        colunaExcluir.classList.add('none')
+        colunaExcluir.classList.add('bgtd')
+
+        tbody.appendChild(novaLinha);
+
+        document.getElementById('qtd').value = ''
+        document.getElementById('produto').value = ''
+        document.getElementById('preço').value = ''
+
     } else {
         let alerta2 = document.getElementById('alerta2')
         alerta2.classList.toggle('none')
     }
-    function fecharAlerta() {
+}
+function fecharAlerta() {
     let alerta2 = document.getElementById('alerta2')
     alerta2.classList.add('none')
     let alerta = document.getElementById('alerta')
         alerta.classList.add('none')
 }
-    setTimeout(fecharAlerta, 3000)
 
+setTimeout(fecharAlerta, 3000)
 
-};
 
 function mostrarEstoque() {
     let estoque = document.getElementById('estoque')
@@ -73,8 +138,6 @@ function mostrarEstoque() {
     editar.forEach(elemento => {
         elemento.classList.add('none');
     })
-
-
 }
 
 function editarProdutos() {
@@ -86,8 +149,17 @@ function editarProdutos() {
 }
 
 function apagarLinha(botao) {
+    
     let linha = botao.parentNode.parentNode;
+    let cells = linha.getElementsByTagName('td');
+    if (dadosTabela.indexOf(cells[0]) === dadosTabela.indexOf(cells[1]) === dadosTabela.indexOf(cells[2])) {
+        dadosTabela.splice(cells[0])
+    }
+    
     linha.parentNode.removeChild(linha)
+
+
+
 }
 
 function editarConteudo(botao) {
@@ -107,7 +179,5 @@ function editarConteudo(botao) {
     document.getElementById('qtd').value = cells[0].innerText
     document.getElementById('produto').value = cells[1].innerText
     document.getElementById('preço').value = cells[2].innerText
-
-    
-    
 }
+

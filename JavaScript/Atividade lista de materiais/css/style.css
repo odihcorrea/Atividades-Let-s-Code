@@ -1,7 +1,7 @@
 body, html {
     height: 100%;
     width: 100%;
-    background: linear-gradient(to bottom, rgb(146, 146, 255), rgb(255, 116, 116));
+    background: linear-gradient(to bottom, rgb(122, 255, 108), rgb(95, 162, 255));
 }
 
 #contain {
@@ -107,3 +107,4 @@ th {
 table {
     border-radius: 20px;
 }
+

@@ -30,12 +30,15 @@
             <div class="aparecer" id="caixa">
                 <h1>Cadastro de produtos</h1>
                 <div id="formulario">
-                    <form  action="">
+                    <!-- Formulário -->
+                    <form>
                         <input type="number" id="qtd" placeholder="Quantidade">
                         <input type="text" id="produto" placeholder="Produto">
                         <input type="text" id="preço" placeholder="Preço">
-                    </form>  
-                    <button type="submit" onclick="cadastrarProduto()" id="botaoCadastrar" class="btn btn-primary btn-block">Cadastrar Produto</button>                      
+                        <button type="submit" onclick="cadastrarProduto()" id="botaoCadastrar" class="btn btn-primary btn-block">Cadastrar Produto</button>                       
+
+                    </form> <!--Final do formulário-->
+                    
                     <button onclick="mostrarEstoque()" id="botaoEstoque" class="btn btn-success btn-block">Estoque</button>
                 </div>
             </div>

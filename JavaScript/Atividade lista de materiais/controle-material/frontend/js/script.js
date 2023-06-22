@@ -1,3 +1,5 @@
+import {addMaterial} from './services/service.js'
+
 // array
 var dadosTabela = []
 
@@ -66,9 +68,9 @@ function cadastrarProduto() {
         var tbody = tabela.getElementsByTagName('tbody')[0];
 
         const dadosLinha = { 
-            Quantidade: qtdeMaterial,
-            Produto:  nomeMaterial,
-            Preço: precoUnitario
+            quantidade: Number(qtdeMaterial),
+            produto:  nomeMaterial,
+            preco: Number(precoUnitario)
         }
 
         dadosTabela.push(dadosLinha)
